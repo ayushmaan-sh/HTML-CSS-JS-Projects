@@ -84,3 +84,29 @@ let history = [];
                 ctx.drawImage(img, 0, 0);
             }
         });
+
+        canvas.addEventListener('touchstart', (event) => {
+            isDrawing = true;
+            const touchPos = getTouchPos(canvas, event);
+            lastX = touchPos.x;
+            lastY = touchPos.y;
+            event.preventDefault();
+        });
+        
+        canvas.addEventListener('touchmove', (event) => {
+            if (isDrawing) {
+                const touchPos = getTouchPos(canvas, event);
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(touchPos.x, touchPos.y);
+                ctx.stroke();
+        
+                lastX = touchPos.x;
+                lastY = touchPos.y;
+            }
+            event.preventDefault();
+        });
+        
+        canvas.addEventListener('touchend', () => {
+            isDrawing = false;
+        });

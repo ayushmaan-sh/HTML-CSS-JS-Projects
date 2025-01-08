@@ -1,0 +1,38 @@
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+.canvas {
+    border: 2px solid rgb(0, 0, 0);
+    width: 100%;
+    height: auto;
+}
+
+.top, .bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.block, input, select, button {
+    width: calc(33.33% - 10px);
+    box-sizing: border-box;
+}
+
+.bottom > button {
+    width: calc(33.33% - 10px);
+}
+
+@media (max-width: 600px) {
+    .block, input, select, button, .bottom > button {
+        width: 100%;
+    }
+}
